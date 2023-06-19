@@ -1,13 +1,13 @@
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { ShoppingCart } from "@mui/icons-material";
+import { Badge } from "@mui/material";
 
-export const CartWidget = () => {
+const CartWidget = () => {
   return (
-    <h3>
-      <a href="">
-        <AiOutlineShoppingCart color="red" title="carrito" size={"2em"} />
-        <span>0</span>
-      </a>
-    </h3>
+    <a href="">
+      <Badge badgeContent={3} color="primary">
+        <ShoppingCart color="action" />
+      </Badge>
+    </a>
   );
 };
 

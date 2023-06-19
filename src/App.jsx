@@ -1,16 +1,18 @@
 import { useState } from "react";
-import Home from "./components/page/home/Home";
-import ItemList from "./components/page/itemList/ItemList";
-import { Navbar } from "./components/layout/navbar/Navbar";
+// import Home from "./components/page/home/Home";
+import Navbar from "./components/layout/navbar/Navbar";
+import ItemListContainer from "./components/page/itemListContainer/ItemListContainer";
 
 function App() {
-  const [saludo, setSaludo] = useState("holiwi");
+  // const [saludo, setSaludo] = useState("holiwi");
+  const [bienvenido, setBienvenido] = useState(
+    "Bienvenid@ a la librería DamaLu!"
+  );
   return (
     <div>
       <Navbar />
-      <h1>Hola Mundo!</h1>
-      <Home nombre={"Juan"} apellido={"Perez"} />
-      <ItemList saludo={saludo} setSaludo={setSaludo} />
+      {/* <Home nombre={"Juan"} apellido={"Perez"} /> */}
+      <ItemListContainer bienvenido={bienvenido} />
     </div>
   );
 }

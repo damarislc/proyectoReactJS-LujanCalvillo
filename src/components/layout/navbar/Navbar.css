@@ -1,0 +1,26 @@
+div.panel.wrapper {
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.page-header div.panel.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.857em;
+  position: relative;
+  /* */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+.logo {
+  margin: 0;
+  max-width: 10.5em;
+}
+
+/* .logo-img {
+  width: 240;
+  height: 76;
+} */

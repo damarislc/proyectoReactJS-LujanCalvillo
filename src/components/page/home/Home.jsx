@@ -1,7 +1,7 @@
 // useState
 import { useState } from "react";
 
-export const Home = ({ nombre, apellido }) => {
+const Home = ({ nombre, apellido }) => {
   //const { nombre, apellido } = props;
   const [contador, setContador] = useState(0); // [variable, funcion que modifica esa variable]
 
