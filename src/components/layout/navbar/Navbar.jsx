@@ -1,14 +1,15 @@
 import "./Navbar.css";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import CartWidget from "../../common/cartWidget/CartWidget";
-import { Aod, AudioFile, AutoStories } from "@mui/icons-material";
+import { Aod, AudioFile, AutoStories, LibraryBooks } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <header className="page-header">
       <div className="panel wrapper">
         <div className="panel header">
-          <a href="." className="logo">
+          <Link to="/" className="logo">
             <picture>
               <img
                 className="logo-img"
@@ -19,14 +20,35 @@ const Navbar = () => {
                 height={50}
               />
             </picture>
-          </a>
+          </Link>
           <CartWidget />
         </div>
       </div>
       <BottomNavigation showLabels>
-        <BottomNavigationAction label="Libros" icon={<AutoStories />} />
-        <BottomNavigationAction label="Ebooks" icon={<Aod />} />
-        <BottomNavigationAction label="Audiolibros" icon={<AudioFile />} />
+        <BottomNavigationAction
+          component={Link}
+          to="/"
+          label="Todos"
+          icon={<LibraryBooks />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/type/libro"
+          label="Libros"
+          icon={<AutoStories />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/type/eBook"
+          label="eBooks"
+          icon={<Aod />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/type/audiolibro"
+          label="audiolibro"
+          icon={<AudioFile />}
+        />
       </BottomNavigation>
     </header>
   );
