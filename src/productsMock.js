@@ -1,6 +1,5 @@
 export let products = [
   {
-    id: 1,
     title: "Eragon",
     price: 450,
     stock: 4,
@@ -15,7 +14,6 @@ export let products = [
   },
   //4 productos, 2 categorias diferentes
   {
-    id: 2,
     title: "Harry Potter y la piedra filosofal",
     price: 650,
     stock: 2,
@@ -29,7 +27,6 @@ export let products = [
     type: "libro",
   },
   {
-    id: 3,
     title: "El piloto de tu vida",
     price: 482,
     stock: 5,
@@ -43,7 +40,6 @@ export let products = [
     type: "eBook",
   },
   {
-    id: 4,
     title: "El monstruo que habita en mí se llama ansiedad",
     price: 467,
     stock: 4,

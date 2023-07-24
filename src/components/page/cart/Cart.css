@@ -1,0 +1,104 @@
+.cart-main-content {
+  width: calc(61% - 26px);
+  float: left;
+  background: #faf9f9;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.table-wrapper {
+  margin-bottom: 20px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+}
+
+.cart.table-wrapper .items {
+  min-width: 100%;
+  width: auto;
+}
+
+.cart.table-wrapper .item .col.item {
+  display: flex;
+  min-height: 75px;
+  padding: 20px 0;
+  position: relative;
+}
+
+tbody td {
+  border: 0;
+  vertical-align: middle;
+}
+
+.cart tbody td {
+  border: 0;
+  vertical-align: middle;
+}
+.cart.item {
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.libro-img-link {
+  position: relative;
+  line-height: 1;
+  max-width: 78px;
+  margin-right: 15px;
+  width: 75%;
+  display: block;
+}
+
+.libro-img-container {
+  display: inline-block;
+  max-width: 100%;
+  width: auto !important;
+  position: relative;
+}
+
+.libro-img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.cart.table-wrapper .item .col.item .product-item-details {
+  flex-grow: 1;
+}
+
+.libro-name {
+  min-height: unset;
+  height: unset;
+  overflow: unset;
+  font-size: 1.4rem;
+  display: block;
+  font-weight: 400;
+  hyphens: auto;
+  word-wrap: break-word;
+  text-transform: uppercase;
+  margin: 29px auto 5px;
+}
+
+.libro-name > a {
+  text-decoration: none;
+}
+
+.actions-toolbar {
+  text-align: right;
+  margin-bottom: auto;
+  margin-top: 7px;
+}
+
+.actions-toolbar::before {
+  content: "";
+  display: table;
+}
+
+.cart.table-wrapper .item .col.item > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-content: end;
+}

@@ -1,17 +1,9 @@
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import CounterContainer from "../../common/counter/CounterContainer";
+import "./ItemDetail.css";
 
-const ItemDetail = ({ producto }) => {
-  return (
-    <Grid container spacing={0} direction="column" alignItems="center">
+const ItemDetail = ({ producto, onAdd, initial }) => {
+  /*
+  <Grid container spacing={0} direction="column" alignItems="center">
       <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
         <CardActionArea>
           <CardMedia
@@ -29,11 +21,40 @@ const ItemDetail = ({ producto }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Agregar al carrito</Button>
+            <Button size="small" onClick={onAdd}>
+              Agregar al carrito
+            </Button>
           </CardActions>
         </CardActionArea>
       </Card>
     </Grid>
+  */
+  return (
+    <section className="core">
+      <section className="description">
+        <h1>{producto.title}</h1>
+        <img
+          src={producto.img}
+          alt={producto.title}
+          className="product-image"
+        />
+        <p className="desc">{producto.description}</p>
+        <div className="price">
+          <div className="main-tag">
+            <p>${producto.price}</p>
+          </div>
+        </div>
+        {/* TODO: deshabilitar cuando no hay stock */}
+        <div className="buttons" disabled={producto.stock}>
+          <CounterContainer
+            stock={producto.stock}
+            onAdd={onAdd}
+            initial={initial}
+          />
+          {/* <QuatityButton /> */}
+        </div>
+      </section>
+    </section>
   );
 };
 
