@@ -1,3 +1,6 @@
+import { Button, ButtonGroup, rgbToHex } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import restarIcon from "../../../icons/icon-minus.svg";
 import sumarIcon from "../../../icons/icon-plus.svg";
 import "./Counter.css";
@@ -27,9 +30,9 @@ const Counter = ({ contador, sumar, restar, onAdd, isInItemDetail = true }) => {
           Agregar al carrito
         </button>
       )}
-    */
-  return (
-    <div className="amount">
+
+
+      <div className="amount">
       <button className="qty-dec" onClick={restar} disabled={contador === 0}>
         <span className="remove">remove</span>
       </button>
@@ -42,6 +45,22 @@ const Counter = ({ contador, sumar, restar, onAdd, isInItemDetail = true }) => {
           Agregar al carrito
         </button>
       )}
+    </div>
+    */
+  return (
+    <div className="control">
+      <label className="label">
+        <span>Cantidad</span>
+      </label>
+      <ButtonGroup>
+        <Button aria-label="reduce" onClick={restar} className="reduce">
+          <RemoveIcon fontSize="small" />
+        </Button>
+        <span className="label">{contador}</span>
+        <Button aria-label="increase" onClick={sumar}>
+          <AddIcon fontSize="small" />
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
