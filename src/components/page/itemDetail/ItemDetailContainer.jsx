@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
 
   const { id } = useParams();
   const totalQuantity = getQuantityById(id);
-  console.log(totalQuantity);
 
   useEffect(() => {
     let productsCollection = collection(db, "products");

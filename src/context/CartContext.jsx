@@ -24,7 +24,6 @@ const CartContextProvider = ({ children }) => {
   };
 
   const deleteById = (id) => {
-    console.log(id);
     setCart(cart.filter((elemento) => elemento.id !== id));
   };
 

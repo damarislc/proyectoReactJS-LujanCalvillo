@@ -3,7 +3,6 @@ import ProductCard from "../../common/productCard/ProductCard";
 
 const ItemList = ({ items }) => {
   const arr = [1, 2, 3, 4];
-  console.log(items);
   return (
     <div className="bienvenido-container">
       <div

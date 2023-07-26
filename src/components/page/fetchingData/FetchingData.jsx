@@ -6,11 +6,7 @@ const FetchingData = () => {
   useEffect(() => {
     let promesa = fetch("https://jsonplaceholder.typicode.com/users");
 
-    promesa
-      .then((res) => res.json())
-      .then((res) => setUsers(res))
-      .catch((error) => console.log(error))
-      .finally(() => console.log("Terminó el proceso"));
+    promesa.then((res) => res.json()).then((res) => setUsers(res));
   }, []);
 
   const createUser = () => {

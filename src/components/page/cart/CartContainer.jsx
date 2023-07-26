@@ -30,7 +30,6 @@ const CartContainer = () => {
       }
     });
   };
-  console.log(cart);
   /* <div key={elemento.id} style={{ border: "2px solid black" }}>
               <h4>{elemento.title}</h4>
               <h5>{elemento.price}</h5>

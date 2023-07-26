@@ -36,7 +36,7 @@ const CheckoutContainer = () => {
     addDoc(ordersCollection, order)
       .then((res) => setOrderId(res.id))
       .catch((e) => {
-        console.log("error al crear la orden, " + e);
+        alert("error al crear la orden, " + e);
       });
 
     //MODIFICAR EL STOCK EN FIREBASE DE CADA DOCUMENT
