@@ -3,10 +3,9 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import CartWidget from "../../common/cartWidget/CartWidget";
 import { Aod, AudioFile, AutoStories, LibraryBooks } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import Dashboard from "../../page/dashboard/Dashboard";
 
 const Navbar = () => {
-  let userRol = "admin";
+  let userRol = "user";
   return (
     <header className="page-header">
       <div className="panel wrapper">
@@ -48,11 +47,11 @@ const Navbar = () => {
         <BottomNavigationAction
           component={Link}
           to="/type/audiolibro"
-          label="audiolibro"
+          label="Audiolibro"
           icon={<AudioFile />}
         />
-        {userRol === "admin" && <Link to={"/Dashboard"}>Admin</Link>}
       </BottomNavigation>
+      {userRol === "admin" && <Link to={"/Dashboard"}>Admin</Link>}
     </header>
   );
 };

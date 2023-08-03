@@ -1,10 +1,10 @@
-import { Skeleton } from "@mui/material";
+import { Container, Skeleton } from "@mui/material";
 import ProductCard from "../../common/productCard/ProductCard";
 
 const ItemList = ({ items }) => {
   const arr = [1, 2, 3, 4];
   return (
-    <div className="bienvenido-container">
+    <Container className="main-container">
       <div
         className="container"
         style={{
@@ -24,7 +24,6 @@ const ItemList = ({ items }) => {
               return (
                 <div key={e}>
                   <Skeleton variant="rectangular" width={210} height={60} />
-                  {/* <Skeleton variant="circular" width={40} height={40} /> */}
                   <Skeleton
                     variant="text"
                     sx={{ fontSize: "1.3rem" }}
@@ -40,7 +39,7 @@ const ItemList = ({ items }) => {
               );
             })}
       </div>
-    </div>
+    </Container>
   );
 };
 

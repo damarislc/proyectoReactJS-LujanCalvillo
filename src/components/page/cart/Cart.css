@@ -1,6 +1,5 @@
 .cart-main-content {
   width: calc(61% - 26px);
-  float: left;
   background: #faf9f9;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
@@ -89,7 +88,6 @@ tbody td {
 .actions-toolbar {
   text-align: right;
   margin-bottom: auto;
-  margin-top: 7px;
 }
 
 .actions-toolbar::before {
@@ -101,4 +99,60 @@ tbody td {
   display: flex;
   flex-direction: column;
   align-content: end;
+}
+
+.libro-name {
+  margin-bottom: 29px;
+}
+
+.control {
+  display: block !important;
+  margin-bottom: 29px;
+}
+
+.counter-group {
+  margin-left: 15px;
+}
+
+.precio {
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.cart-all {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.total {
+  margin-top: 1em;
+}
+
+.checkout {
+  margin-top: 1em;
+}
+
+@media (max-width: 767px) {
+  .libro-name {
+    font-size: 0.9rem;
+  }
+  .control .label {
+    font-size: 0.9rem;
+  }
+  .counter-group {
+    margin-left: 0;
+  }
+  .css-iajp3t-MuiButtonGroup-root .MuiButtonGroup-grouped {
+    max-width: 20px;
+    max-height: 20px;
+  }
+  .availability {
+    font-size: 0.9rem !important;
+  }
+  .total {
+    font-size: 1.1rem;
+  }
 }

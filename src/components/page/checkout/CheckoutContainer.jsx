@@ -8,81 +8,102 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Checkout from "./Checkout";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutContainer = () => {
   const [orderId, setOrderId] = useState("");
-  const { cart, getTotalPrice } = useContext(CartContext);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const [data, setData] = useState({
-    name: "",
-    phone: "",
-    email: "",
+  const { handleSubmit, handleChange, errors } = useFormik({
+    initialValues: {
+      name: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      street: "Santa Clara",
+      number: "1234",
+      cp: "45056",
+      neighborhood: "Jardines del Country",
+      city: "Guadalajara",
+      state: "Jalisco",
+      country: "Mexico",
+      references: "Entre Capital Norte y Juan Palomar",
+    },
+    onSubmit: (data) => {
+      let order = {
+        buyer: data,
+        items: cart,
+        total,
+        date: serverTimestamp(),
+      };
+
+      //CREAR LA ORDEN EN FIREBASE
+      const ordersCollection = collection(db, "orders");
+      addDoc(ordersCollection, order)
+        .then((res) => {
+          setOrderId(res.id);
+          Swal.fire({
+            icon: "success",
+            title: "Gracias por su compra",
+            text: `Su número de compra es: ${res.id}`,
+          });
+          clearCart();
+          navigate("/");
+        })
+        .catch((e) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error al crear la orden",
+            text: `Algo salió mal al intentar crear su orden: ${e}`,
+          });
+        });
+
+      //MODIFICAR EL STOCK EN FIREBASE DE CADA DOCUMENT
+      cart.forEach((product) => {
+        updateDoc(doc(db, "products", product.id), {
+          stock: product.stock - product.quantity,
+        });
+      });
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Este campo es obligatorio"),
+      lastname: Yup.string().required("Este campo es obligatorio"),
+      email: Yup.string()
+        .email("Debe ser un email válido")
+        .required("Este campo es obligatorio"),
+      phone: Yup.number("Solo escribe el número, sin caracteres")
+        .test(
+          "len",
+          "El telefono debe ser 10 números",
+          (val) => val.toString().length === 10
+        )
+        .required("Este campo es obligatorio"),
+    }),
+    validateOnChange: false,
+    validateOnBlur: true,
   });
 
   let total = getTotalPrice();
-
-  const handleSubmit = (evento) => {
-    evento.preventDefault();
-
-    let order = {
-      buyer: data,
-      items: cart,
-      total,
-      date: serverTimestamp(),
-    };
-
-    //CREAR LA ORDEN EN FIREBASE
-    const ordersCollection = collection(db, "orders");
-    addDoc(ordersCollection, order)
-      .then((res) => setOrderId(res.id))
-      .catch((e) => {
-        alert("error al crear la orden, " + e);
-      });
-
-    //MODIFICAR EL STOCK EN FIREBASE DE CADA DOCUMENT
-    cart.forEach((product) => {
-      updateDoc(doc(db, "products", product.id), {
-        stock: product.stock - product.quantity,
-      });
-    });
-  };
-
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  const formatter = new Intl.NumberFormat("es-MX", {
+    style: "currency",
+    currency: "MXN",
+  });
 
   return (
-    <div>
-      <h1>Checkout</h1>
-      {orderId ? (
-        <div>
-          <h3>Gracias por su compra</h3>
-          <h4>Su numero de compra es: {orderId}</h4>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Ingrese su nombre"
-            name="name"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Ingrese su apellido"
-            name="phone"
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            placeholder="Ingrese su email"
-            name="email"
-            onChange={handleChange}
-          />
-          <button type="submit">Comprar</button>
-        </form>
-      )}
-    </div>
+    <Checkout
+      orderId={orderId}
+      handleSubmit={handleSubmit}
+      handleChange={handleChange}
+      errors={errors}
+      cart={cart}
+      getTotalPrice={getTotalPrice}
+      formatter={formatter}
+    />
   );
 };
 

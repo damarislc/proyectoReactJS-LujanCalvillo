@@ -1,4 +1,16 @@
-.bienvenido-container {
-  text-align: center;
+.main-container {
   margin-top: 1em;
+}
+
+.card-title {
+  text-align: center;
+  min-height: 64px;
+}
+
+.card-resumen {
+  padding-bottom: 1em;
+}
+
+.card-type {
+  text-align: center;
 }

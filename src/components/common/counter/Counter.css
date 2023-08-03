@@ -1,27 +1,8 @@
-.qty-dec {
-  width: 29px;
-  height: 29px;
-  border-radius: 3px;
-  line-height: 29px;
-  padding: 0;
-  margin: 0;
-  display: block;
-  border: 1 px solid #b2bcca;
-  font-size: 1.2rem;
-  line-height: 1;
-  cursor: pointer;
-  vertical-align: middle;
+.actions {
+  width: 100%;
+  align-items: center;
+  margin-top: 2em;
 }
-
-.qty-dec::before {
-  content: "-";
-  vertical-align: middle;
-  font-size: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none;
-}
-
-span.remove {
-  display: none;
+.add-to-cart {
+  width: 100%;
 }

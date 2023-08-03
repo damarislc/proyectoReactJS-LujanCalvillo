@@ -2,91 +2,10 @@ import CounterContainer from "../../common/counter/CounterContainer";
 import "./ItemDetail.css";
 
 const ItemDetail = ({ producto, onAdd, initial }) => {
-  /*
-  <Grid container spacing={0} direction="column" alignItems="center">
-      <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="500"
-            image={producto.img}
-            alt="portada libro"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {producto.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {producto.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" onClick={onAdd}>
-              Agregar al carrito
-            </Button>
-          </CardActions>
-        </CardActionArea>
-      </Card>
-    </Grid>
-
-    ------------
-
-    <div className="description">
-        <h1>{producto.title}</h1>
-        <img
-          src={producto.img}
-          alt={producto.title}
-          className="product-image"
-        />
-        <p className="desc">{producto.description}</p>
-        <div className="price">
-          <div className="main-tag">
-            <p>${producto.price}</p>
-          </div>
-        </div>
-        { TODO: deshabilitar cuando no hay stock }
-        <div className="buttons" disabled={producto.stock}>
-          <CounterContainer
-            stock={producto.stock}
-            onAdd={onAdd}
-            initial={initial}
-          />
-          { <QuatityButton /> }
-
-
-          <label className="label">
-                <span>Cantidad</span>
-              </label>
-              <div className="buttons-container">
-                <button className="qty-changer qty-dec">-</button>
-                <input
-                  type="number"
-                  name="qty"
-                  id="qty"
-                  min="0"
-                  value="1"
-                  title="Cantidad"
-                  className="input-text qty"
-                />
-                <button className="qty-changer qty-inc">+</button>
-              </div>
-
-
-        </div>
-      </div>
-  */
   return (
     <section className="core">
       <div className="main">
-        <div>breadcrumb</div>
         <div className="product-detail">
-          <div className="product media">
-            <img
-              src={producto.img}
-              alt={producto.title}
-              className="product-image"
-            />
-          </div>
           <div className="product-info">
             <h1 className="page-title">{producto.title}</h1>
             <p>
@@ -97,6 +16,17 @@ const ItemDetail = ({ producto, onAdd, initial }) => {
               <b>Categoría: </b>
               {producto.category}
             </p>
+            <p>
+              <b>Editorial: </b>
+              {producto.editorial}
+            </p>
+          </div>
+          <div className="product media">
+            <img
+              src={producto.img}
+              alt={producto.title}
+              className="product-image"
+            />
           </div>
           <div className="product-essential">
             <div className="price-box">
@@ -112,7 +42,39 @@ const ItemDetail = ({ producto, onAdd, initial }) => {
             />
           </div>
         </div>
-        <div className="product-desc">{producto.description}</div>
+        <div className="product-desc">
+          <div className="product data items sinopsis">
+            <div className="data title">Sinopsis</div>
+            <div className="item content desc-content">
+              {producto.description}
+            </div>
+          </div>
+          <div className="product data items characteristics">
+            <div className="data title">Caracteristicas</div>
+            <div className="item content">
+              <div className="table-wrapper">
+                <ul>
+                  <li>
+                    <span className="attr-label">Número de páginas</span>
+                    <span className="attr-data">{producto.pages}</span>
+                  </li>
+                  <li>
+                    <span className="attr-label">Idioma</span>
+                    <span className="attr-data">{producto.language}</span>
+                  </li>
+                  <li>
+                    <span className="attr-label">Fecha de publicación</span>
+                    <span className="attr-data">{producto.pubDate}</span>
+                  </li>
+                  <li>
+                    <span className="attr-label">ISDN</span>
+                    <span className="attr-data">{producto.isbn}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
